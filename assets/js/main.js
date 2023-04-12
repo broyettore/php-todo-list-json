@@ -17,10 +17,19 @@ createApp({
         },
 
         addItem() {
-            if (this.toDoAdd.trim().toLowerCase() !== "") {
-                this.toDoList.push({text: this.toDoAdd, done: true});
-                this.toDoAdd = "";
-            }
+                const data = {
+                    newTask: this.toDoAdd
+                };
+    
+                axios.post('server.php', data, {
+                    headers: { 'Content-Type': 'multipart/form-data'}
+                })
+                    .then((response) => {
+                        this.toDoList = response.data;
+                        this.toDoAdd = "";
+                        console.log(this.toDoList)
+                    })
+ 
         },
         cancelItem(index) {
             this.toDoList.splice(index, 1);
