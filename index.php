@@ -1,3 +1,8 @@
+<?php
+
+include ("script.php");
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,7 +30,7 @@
           <div class="site-title">
             <h1 class="fs-4">Shopping</h1>
           </div>
-          <nav class="d-lg-flex justify-content-center" :class="{show : isShow}">
+          <nav class="d-lg-flex justify-content-center" :class="{ show : isShow }">
             <ul class="d-block d-lg-flex">
               <li class="px-2"><a href="#">Services</a></li>
               <li class="px-2"><a href="#">Gallery</a></li>
@@ -50,14 +55,14 @@
         <div class="container d-flex align-items-start justify-content-center">
           <div class="left">
             <div class="input-group mb-3">
-              <input type="text" class="form-control ms-type-bar" v-model="toDoAdd"  placeholder="To Do ..." aria-label="Recipient's username" aria-describedby="button-addon2">
-              <button class="btn btn-outline-secondary ms-type-btn"  type="button" id="button-addon2">Go!</button>
+              <input type="text" class="form-control ms-type-bar" v-model="toDoAdd" @keyup.enter="addItem"  placeholder="To Do ..." aria-label="Recipient's username" aria-describedby="button-addon2">
+              <button class="btn btn-outline-secondary ms-type-btn" @click="addItem" type="button" id="button-addon2">Go!</button>
             </div>
             <ul class="list-group">
-              <li class="list-group-item ms-li d-flex justify-content-between align-items-center" v-for="(todo, index) in toDoList">
-                <span>{{ todo.text }}</span>
+              <li class="list-group-item ms-li d-flex justify-content-between align-items-center" v-for="(toDo, index) in toDoList"> 
+                <span>{{ toDo.text }}</span>
                 <div class="cancel-ctn">
-                  <i class="fa-solid fa-xmark"></i>
+                  <i class="fa-solid fa-xmark" @click="cancelItem(index)"></i>
                 </div>
               </li>
             </ul>
