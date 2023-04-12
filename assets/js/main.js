@@ -24,6 +24,13 @@ createApp({
         },
         cancelItem(index) {
             this.toDoList.splice(index, 1);
+        },
+        showDone(element) {
+            if (element.done === true) {
+                return element.done = false;
+            } else {
+                return element.done = !element.done;
+            }
         }
     },
     created() {
@@ -31,9 +38,6 @@ createApp({
        axios.get('server.php')
             .then((response) => {
                 this.toDoList = response.data;
-                console.log("START")
-                console.log(this.toDoList)
-                console.log("END")
             })
     }
 }).mount("#app")

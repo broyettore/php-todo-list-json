@@ -41,13 +41,6 @@ a, button, i {
 }
 
 /********* HEADER*********/
-header nav,
-header  .icon-ctn,
-header  .site-title,
-header .bar {
-    width: calc(100% / 3);
-}
-
 header > .container {
     position: relative;
 }
@@ -62,7 +55,6 @@ header nav {
 }
 
 header nav ul li{
-    background-color: brown;
     padding: 5px;
 }
 
@@ -144,6 +136,10 @@ main ul li span {
     header nav ul li{
         background-color: #412120;
         padding: 0;
+    }
+
+    header nav ul li:hover {
+        background-color: transparent;
     }
 
 }

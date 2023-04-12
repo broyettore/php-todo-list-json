@@ -26,25 +26,20 @@ include ("script.php");
     <div id="app" v-cloak>
        <!-- header  -->
       <header class="d-flex justify-content-between align-items-center">
-        <div class="container d-flex justify-content-between">
-          <div class="site-title">
+        <div class="container d-flex justify-content-between p-2">
+          <div class="site-title d-flex align-items-center">
             <h1 class="fs-4">Shopping</h1>
           </div>
           <nav class="d-lg-flex justify-content-center" :class="{ show : isShow }">
             <ul class="d-block d-lg-flex">
-              <li class="px-2"><a href="#">Services</a></li>
-              <li class="px-2"><a href="#">Gallery</a></li>
-              <li class="px-2"><a href="#">About</a></li>
-              <li class="px-2"><a href="#">Contact</a></li>
+              <li class="p-2 mx-2"><a href="#">Services</a></li>
+              <li class="p-2 mx-2"><a href="#">Gallery</a></li>
+              <li class="p-2 mx-2"><a href="#">About</a></li>
+              <li class="p-2 mx-2"><a href="#">Contact</a></li>
             </ul>
           </nav>
-          <div class="bar d-flex justify-content-center align-items-center d-lg-none">
+          <div class="bar d-flex justify-content-end align-items-center d-lg-none">
             <i class="fa-solid fa-bars fs-5" @click="showToggle"></i>
-          </div>
-          <div class="icon-ctn text-end">
-            <i class="fa-regular fa-star px-2"></i>
-            <i class="fa-solid fa-user px-2"></i>
-            <i class="fa-solid fa-cart-shopping ps-2"></i>
           </div>
         </div>
       </header>
@@ -60,7 +55,7 @@ include ("script.php");
             </div>
             <ul class="list-group">
               <li class="list-group-item ms-li d-flex justify-content-between align-items-center" v-for="(toDo, index) in toDoList"> 
-                <span>{{ toDo.text }}</span>
+                <span :class="{ taskDone : toDo.done }" @click="showDone(toDo)">{{ toDo.text }}</span>
                 <div class="cancel-ctn">
                   <i class="fa-solid fa-xmark" @click="cancelItem(index)"></i>
                 </div>

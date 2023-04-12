@@ -1,15 +1,15 @@
 <?php
 
-$languages = file_get_contents(__DIR__.'/data.json');
+$task = file_get_contents(__DIR__.'/data.json');
 
-$languages = json_decode($languages, true);
+$task = json_decode($task, true);
 
-$languages = json_encode($languages);
+$task = json_encode($task);
 
-file_put_contents(__DIR__.'/toDoList.json', $languages);
+file_put_contents(__DIR__.'/toDoList.json', $task);
 
 //restituisco content type: json
 header('Content-Type: application/json');
 
 //stampo string json 
-echo $languages;
+echo $task;
